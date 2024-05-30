@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\ProjectController;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,9 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('projects', function () {
-    return Project::all();
-});
-
+Route::get('projects', [ProjectController::class, 'index']); 
 //CONVERT my Table's Values ON JSON
-//Using POSTMAN : you can call values from this URL : (URL SERVER)/api/projects
+//Using POSTMAN : you can call values from this URL : http://(URL SERVER)/api/projects
+
+//REMEMBER TO USE A CONTROLLER
