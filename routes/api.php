@@ -22,3 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('projects', function () {
     return Project::all();
 });
+
+//CONVERT my Table's Values ON JSON
+//Using POSTMAN : you can call values from this URL : (URL SERVER)/api/projects
