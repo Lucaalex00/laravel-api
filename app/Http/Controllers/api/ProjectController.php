@@ -16,4 +16,22 @@ class ProjectController extends Controller
             'projects' => $projects
         ]);
     }
+
+    public function show($id)
+    {
+        $project = Project::all()->where('id', $id)->first();
+        if ($project) {
+            //Return OBJECT
+            return response()->json([
+                'success' => true,
+                'response' => $project,
+            ]);
+        } else {
+            //RETURN ERROR 404 RESPONSE
+            return response()->json([
+                'success' => false,
+                'response' => '404 Sorry Nothing Found !'
+            ]);
+        }
+    }
 }

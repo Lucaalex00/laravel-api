@@ -42,10 +42,13 @@ class ProjectController extends Controller
         $validated['slug'] = $slug;
 
         //COVER_IMAGE
-        $image_path = Storage::put('uploads', $validated['cover_image']);  //IMG MAKER
-        /* dd($image_path); */
+        if ($request->has('cover_image')) {
+
+            $image_path = Storage::put('uploads', $validated['cover_image']);  //IMG MAKER
+            /* dd($image_path); */
+            /* dd($validated); */
+        }
         $validated['cover_image'] = $image_path;
-        /* dd($validated); */
 
         /* Create */
         Project::create($validated);
