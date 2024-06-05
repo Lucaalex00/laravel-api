@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Models\Lead;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::get('/mailable', function () {
         'email' => 'luca@example.com',
         'message' => 'hello'
     ];
+    $lead = Lead::find(1)->get();
     return new App\Mail\NewLeadMessage($lead);
 });
 

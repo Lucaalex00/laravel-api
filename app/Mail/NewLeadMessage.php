@@ -17,7 +17,7 @@ class NewLeadMessage extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public $data)
+    public function __construct(public $lead)
     {
     }
 
@@ -41,7 +41,7 @@ class NewLeadMessage extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.new-lead-message',
+            view: 'new-lead-message',
         );
     }
 

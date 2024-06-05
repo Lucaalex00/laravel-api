@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\ProjectController;
+use App\Http\Controllers\LeadController;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,4 +29,4 @@ Route::get('projects', [ProjectController::class, 'index']);
 
 Route::get('projects/{project}', [ProjectController::class, 'show']);
 
-Route::post('lead', [LeadController::class, 'latest']);
+Route::post('lead', [LeadController::class, 'store']);
