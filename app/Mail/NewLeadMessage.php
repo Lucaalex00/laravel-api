@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Address;
 
 class NewLeadMessage extends Mailable
 {
@@ -16,9 +17,8 @@ class NewLeadMessage extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public $data)
     {
-        //
     }
 
     /**
@@ -27,6 +27,10 @@ class NewLeadMessage extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            from: new Address('jeffrey@example.com', 'Luca'),
+            replyTo: [
+                new Address('taylor@example.com', 'Taylor Otwell'),
+            ],
             subject: 'New Lead Message',
         );
     }
@@ -37,7 +41,7 @@ class NewLeadMessage extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.new-lead-message',
         );
     }
 

@@ -22,6 +22,15 @@ Route::get('/', function () {
 });
 
 
+Route::get('/mailable', function () {
+    $lead = [
+        'name' => 'Luca',
+        'email' => 'luca@example.com',
+        'message' => 'hello'
+    ];
+    return new App\Mail\NewLeadMessage($lead);
+});
+
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/portfolio', ProjectController::class)->parameters([

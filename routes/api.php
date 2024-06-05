@@ -27,3 +27,5 @@ Route::get('projects', [ProjectController::class, 'index']);
 //REMEMBER TO USE A CONTROLLER
 
 Route::get('projects/{project}', [ProjectController::class, 'show']);
+
+Route::post('lead', [LeadController::class, 'latest']);
